@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Samochody osobwe z portalu otomoto.pl (Lublin +50km)">
+
+<title>Opis działania skryptu</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="opis_dzialania_skryptu_files/libs/clipboard/clipboard.min.js"></script>
+<script src="opis_dzialania_skryptu_files/libs/quarto-html/quarto.js"></script>
+<script src="opis_dzialania_skryptu_files/libs/quarto-html/popper.min.js"></script>
+<script src="opis_dzialania_skryptu_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="opis_dzialania_skryptu_files/libs/quarto-html/anchor.min.js"></script>
+<link href="opis_dzialania_skryptu_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="opis_dzialania_skryptu_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="opis_dzialania_skryptu_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="opis_dzialania_skryptu_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="opis_dzialania_skryptu_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Spis treści</h2>
+   
+  <ul>
+  <li><a href="#powrót-do-dokumentacji" id="toc-powrót-do-dokumentacji" class="nav-link active" data-scroll-target="#powrót-do-dokumentacji">Powrót do dokumentacji</a></li>
+  <li><a href="#bibilioteki-użyte-w-skrypcie" id="toc-bibilioteki-użyte-w-skrypcie" class="nav-link" data-scroll-target="#bibilioteki-użyte-w-skrypcie">Bibilioteki użyte w skrypcie</a></li>
+  <li><a href="#wybrane-parametry-samochodów-osobowych" id="toc-wybrane-parametry-samochodów-osobowych" class="nav-link" data-scroll-target="#wybrane-parametry-samochodów-osobowych">Wybrane parametry samochodów osobowych</a></li>
+  <li><a href="#indeksowanie" id="toc-indeksowanie" class="nav-link" data-scroll-target="#indeksowanie">Indeksowanie</a></li>
+  <li><a href="#pętla-for" id="toc-pętla-for" class="nav-link" data-scroll-target="#pętla-for">Pętla “for”</a></li>
+  <li><a href="#wnętrze-pętli" id="toc-wnętrze-pętli" class="nav-link" data-scroll-target="#wnętrze-pętli">Wnętrze pętli</a>
+  <ul class="collapse">
+  <li><a href="#przerwa-w-działaniu-skrypty" id="toc-przerwa-w-działaniu-skrypty" class="nav-link" data-scroll-target="#przerwa-w-działaniu-skrypty">Przerwa w działaniu skrypty</a></li>
+  <li><a href="#wczytanie-adresu-strony" id="toc-wczytanie-adresu-strony" class="nav-link" data-scroll-target="#wczytanie-adresu-strony">Wczytanie adresu strony</a></li>
+  <li><a href="#pobieranie-nazw-samochodów-z-ogłoszeń" id="toc-pobieranie-nazw-samochodów-z-ogłoszeń" class="nav-link" data-scroll-target="#pobieranie-nazw-samochodów-z-ogłoszeń">Pobieranie nazw samochodów z ogłoszeń</a></li>
+  <li><a href="#wczytanie-adresów-poszczególnych-ogłoszeń" id="toc-wczytanie-adresów-poszczególnych-ogłoszeń" class="nav-link" data-scroll-target="#wczytanie-adresów-poszczególnych-ogłoszeń">Wczytanie adresów poszczególnych ogłoszeń</a></li>
+  <li><a href="#wczytywanie-parametrów-poszczególnych-aut" id="toc-wczytywanie-parametrów-poszczególnych-aut" class="nav-link" data-scroll-target="#wczytywanie-parametrów-poszczególnych-aut">Wczytywanie parametrów poszczególnych aut</a></li>
+  </ul></li>
+  <li><a href="#ramka-danych-z-parametrami-samochodów" id="toc-ramka-danych-z-parametrami-samochodów" class="nav-link" data-scroll-target="#ramka-danych-z-parametrami-samochodów">Ramka danych z parametrami samochodów</a>
+  <ul class="collapse">
+  <li><a href="#tworzenie-ramki" id="toc-tworzenie-ramki" class="nav-link" data-scroll-target="#tworzenie-ramki">Tworzenie ramki</a></li>
+  <li><a href="#zmiana-nazw-kolumn" id="toc-zmiana-nazw-kolumn" class="nav-link" data-scroll-target="#zmiana-nazw-kolumn">Zmiana nazw kolumn</a></li>
+  </ul></li>
+  <li><a href="#wynik" id="toc-wynik" class="nav-link" data-scroll-target="#wynik">Wynik</a>
+  <ul class="collapse">
+  <li><a href="#zapis-do-pliku-csv" id="toc-zapis-do-pliku-csv" class="nav-link" data-scroll-target="#zapis-do-pliku-csv">Zapis do pliku CSV</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Opis działania skryptu</h1>
+</div>
+
+<div>
+  <div class="description">
+    Samochody osobwe z portalu otomoto.pl (Lublin +50km)
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="powrót-do-dokumentacji" class="level2">
+<h2 class="anchored" data-anchor-id="powrót-do-dokumentacji"><a href="./Zak-Guz_ED.html">Powrót do dokumentacji</a></h2>
+</section>
+<section id="bibilioteki-użyte-w-skrypcie" class="level2">
+<h2 class="anchored" data-anchor-id="bibilioteki-użyte-w-skrypcie">Bibilioteki użyte w skrypcie</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="wybrane-parametry-samochodów-osobowych" class="level2">
+<h2 class="anchored" data-anchor-id="wybrane-parametry-samochodów-osobowych">Wybrane parametry samochodów osobowych</h2>
+<p>Tworzymy zmienne, które będą przychowywać wartości interesujących nas parametrów samochodów, przypisujemy im wartość pustą (NULL).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Marka_pojazdu <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Model_pojazdu <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Rok_produkcji <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>Przebieg <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>Pojemność_skokowa <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Rodzaj_paliwa <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Moc <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>Kolor <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>Typ_nadwozia <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>Cena <span class="ot">&lt;-</span> <span class="st">""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="indeksowanie" class="level2">
+<h2 class="anchored" data-anchor-id="indeksowanie">Indeksowanie</h2>
+<p>Każdy wczytany samochód otrzyma dodatkową informację, będzie to jego indywidualny numer. Numer identyfikacyjny każdego kolejego samochodu będzię kolejną liczbą ze zbioru liczb naturalnych.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>id_i <span class="ot">&lt;-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="pętla-for" class="level2">
+<h2 class="anchored" data-anchor-id="pętla-for">Pętla “for”</h2>
+<p>Aby wczytać informację kolejnych samochodach, będziemy potrzebowali pętli, która będzie wczytywać kolejne podstrony z ogłoszeniami ze strony <em>otomoto.pl</em>.W naszym przypadku pobierzemy informacje z 110 podstron z ogłoszeniami.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">110</span>){}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="wnętrze-pętli" class="level2">
+<h2 class="anchored" data-anchor-id="wnętrze-pętli">Wnętrze pętli</h2>
+<section id="przerwa-w-działaniu-skrypty" class="level3">
+<h3 class="anchored" data-anchor-id="przerwa-w-działaniu-skrypty">Przerwa w działaniu skrypty</h3>
+<p>Aby uniknąć problemów związanych z łącznością z serverem na której znajdują się ogłoszenia, między kolejnymi iteracjami ustawiamy 3 sekundowe opóźnienie, przy pomocy funkcji <code>Sys.sleep()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.sleep</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="wczytanie-adresu-strony" class="level3">
+<h3 class="anchored" data-anchor-id="wczytanie-adresu-strony">Wczytanie adresu strony</h3>
+<p>Zmiennej <code>link</code> przypisujemy adres <span class="math inline">\(j-tej\)</span> podstrony z ogłoszeniami. Przy pomocy funkcji <code>paste</code> w linku będziemy ustawiać kolejne numery podstron. Zmiennej <code>page</code> przypisujemy zczytaną strukturę strony podanego adresu przy pomocy `rvest::read_html()``</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>link <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"https://www.otomoto.pl/osobowe/miasto_lublin?search%5Border%5D=created_at_first%3Adesc&amp;search%5Bdist%5D=&amp;page="</span>,j,<span class="st">"&amp;search%5Badvanced_search_expanded%5D=true"</span>,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>page <span class="ot">=</span> <span class="fu">read_html</span>(link)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="pobieranie-nazw-samochodów-z-ogłoszeń" class="level3">
+<h3 class="anchored" data-anchor-id="pobieranie-nazw-samochodów-z-ogłoszeń">Pobieranie nazw samochodów z ogłoszeń</h3>
+<p>Korzystając z funkcji <code>html_nodes()</code> oraz znalezionych na stronie <em>tagów</em> (tagi udało się znaleźć przy pomocy wtyczki <code>SelectorGadget</code> oraz przeanalizowaniu kodu html strony), wyszukujemy nazwy samochodów osobowych. Użycie odpowiednich tagów pozwala nam na pobranie tylko i wyłącznie nazw samochodów, których linki przenoszą nas na podstrony <em>otomoto.pl</em>.</p>
+<p>Na stronie jest też możliwość łączenia się z innimi stronami, min.: <span class="math inline">\(https://aaaautolublin.otomoto.pl\)</span> lub <span class="math inline">\(https://peugeotpraseklublin.otomoto.pl\)</span>. Wyselekcjonowanie odpowiednich adresów zabezpieczy nas przed zbędnymi problemami.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">=</span> page <span class="sc">|&gt;</span><span class="fu">html_nodes</span>(<span class="st">".e1b25f6f0 .er34gjf0 a"</span>)<span class="sc">|&gt;</span><span class="fu">html_text2</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="wczytanie-adresów-poszczególnych-ogłoszeń" class="level3">
+<h3 class="anchored" data-anchor-id="wczytanie-adresów-poszczególnych-ogłoszeń">Wczytanie adresów poszczególnych ogłoszeń</h3>
+<p>Pobraliśmy nazwy, a teraz potrzebujemy adresów stron poszczególnych ogłoszeń. Udaje się to zrobić przy pomocy funkcji <code>html_attr("href").</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>links <span class="ot">=</span> page <span class="sc">|&gt;</span> <span class="fu">html_nodes</span>(<span class="st">".e1b25f6f0 .er34gjf0 a"</span>) <span class="sc">|&gt;</span> <span class="fu">html_attr</span>(<span class="st">"href"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="wczytywanie-parametrów-poszczególnych-aut" class="level3">
+<h3 class="anchored" data-anchor-id="wczytywanie-parametrów-poszczególnych-aut">Wczytywanie parametrów poszczególnych aut</h3>
+<section id="pętla-for-nr.2" class="level4">
+<h4 class="anchored" data-anchor-id="pętla-for-nr.2">Pętla for (nr.2)</h4>
+<p>Dla każdego ogłoszenia musimy pobrać intersujące nas parametry, znajdujemy je i wczytujemy z pobranych uwcześniej adresów. Pętla wykona się dokładnie tyle razy, ile samochodów udało nam się znaleźć na podstronie.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(links)){}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="wczytanie-strony-z-konkretnym-ogłoszeniem" class="level4">
+<h4 class="anchored" data-anchor-id="wczytanie-strony-z-konkretnym-ogłoszeniem">Wczytanie strony z konkretnym ogłoszeniem</h4>
+<p>Pobieramy stronę <span class="math inline">\(i-tego\)</span> samochodu z <span class="math inline">\(j-tej\)</span> strony.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(links[i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="wczytywanie-parametrów" class="level4">
+<h4 class="anchored" data-anchor-id="wczytywanie-parametrów">Wczytywanie parametrów:</h4>
+<ul>
+<li><p><strong>Cena</strong></p>
+<p>Na początku wczytamy parametr <em>Cena</em>, który znajduje się w nieco innnym położeniu na stronie od pozostałych. Pobrana wartość będzię typu <em>string</em> oraz oprócz liczby, zawierać będzie również znaki białe (“spacja”) oraz oznaczenie waluty “PLN”. Od razu po wczytaniu wartości, przekonwertujmy ją na zmienną typu liczbowego przy pomocy funkcji <code>prase_number()</code>. Znaki białe oraz litery usuwamy za pomocą funkcji <code>gsub()</code>.</p>
+<p><img src="opis_dzialania_skryptu_files/figure-html/cena.png" class="img-fluid"></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cena <span class="ot">=</span> page <span class="sc">|&gt;</span> <span class="fu">html_nodes</span>(<span class="st">".offer-price__number"</span>) <span class="sc">|&gt;</span> <span class="fu">html_text2</span>()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cena <span class="ot">&lt;-</span> <span class="fu">parse_number</span>(<span class="fu">gsub</span>(<span class="st">" "</span>,<span class="st">""</span>,cena[<span class="dv">1</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><strong>Nazwy wszystkich parametrów z ogłoszeń</strong></p>
+<p>Po wczytaniu ceny szukamy kolejnych interesujących nas parametrów. Pobieramy wszystkie dostępne i zapisujemy listę naz w zmiennej <code>parametry_nazwy</code>.</p>
+<p><img src="opis_dzialania_skryptu_files/figure-html/parametry.png" class="img-fluid"></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>parametry_nazwy <span class="ot">&lt;-</span> page <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">".offer-params__label"</span>) <span class="sc">|&gt;</span> <span class="fu">html_text</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><strong>Uzupełnienie listy nazw o parametr “Cena”</strong></p>
+<p>Listę z nazwami uzupelniamy o dodatkowy, interesujący nas parametr, którym jest <em>Cena</em>.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  parametry_nazwy <span class="ot">&lt;-</span> <span class="fu">c</span>(parametry_nazwy,<span class="st">"Cena"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><strong>Wczytanie wartości wszystkich parametrów</strong></p>
+<p>Nazwy zostały wczytane, aczkolwiek potrzebujemy również wartości tych parametrów.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>parametry <span class="ot">&lt;-</span> page <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">".offer-params__value"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text2</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><strong>Uzupełnienie listy o wartość parametru “Cena”</strong></p>
+<p>Podobnie jak powyżej, listę dopełniamy wartością ceny.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>parametry <span class="ot">&lt;-</span> <span class="fu">c</span>(parametry,cena)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><strong>Ramka dlanych dla pojedynczego samochodu</strong></p>
+<p>Dla samochodu tworzymy ramkę danych przechowującą nazwy parametrów oraz ich wartości.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>samochod <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(parametry_nazwy,parametry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><strong>Wyodrębienie interesujących nas 10 parametrów</strong></p>
+<p>W ramce <code>samochod</code> znajdują się wszystkie informacje jakie sprzedający chciał opisać. Nie ma wymogu aby uzupełnić wszystkie możliwe parametry, a więc parametry będą się różnić zależnie od okłoszenia. Wybieramy tylko wyszczególnione na początku parametry, które analizować będziemy w przyszłości.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>samochod <span class="ot">&lt;-</span> samochod[</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>      parametry_nazwy<span class="sc">==</span><span class="st">"Marka pojazdu"</span> <span class="sc">|</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>      parametry_nazwy<span class="sc">==</span><span class="st">"Model pojazdu"</span> <span class="sc">|</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>      parametry_nazwy<span class="sc">==</span><span class="st">"Rok produkcji"</span> <span class="sc">|</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>      parametry_nazwy<span class="sc">==</span><span class="st">"Przebieg"</span> <span class="sc">|</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>      parametry_nazwy<span class="sc">==</span><span class="st">"Pojemność skokowa"</span> <span class="sc">|</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>      parametry_nazwy<span class="sc">==</span><span class="st">"Rodzaj paliwa"</span> <span class="sc">|</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>      parametry_nazwy<span class="sc">==</span><span class="st">"Moc"</span> <span class="sc">|</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>      parametry_nazwy<span class="sc">==</span><span class="st">"Typ nadwozia"</span><span class="sc">|</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>      parametry_nazwy<span class="sc">==</span><span class="st">"Kolor"</span><span class="sc">|</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>      parametry_nazwy<span class="sc">==</span><span class="st">"Cena"</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    ,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><strong>Wektory poszczególnych parametrów dla wszystkich wczytanych aut</strong></p>
+<p>Pobrane parametny dołączamy do utwórzonych na początku wektorów.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>  id <span class="ot">&lt;-</span> <span class="fu">c</span>(id,id_i)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  Marka_pojazdu <span class="ot">&lt;-</span> <span class="fu">c</span>(Marka_pojazdu,samochod<span class="sc">$</span>parametry[<span class="dv">1</span>])</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  Model_pojazdu <span class="ot">&lt;-</span> <span class="fu">c</span>(Model_pojazdu,samochod<span class="sc">$</span>parametry[<span class="dv">2</span>])</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  Rok_produkcji <span class="ot">&lt;-</span> <span class="fu">c</span>(Rok_produkcji,samochod<span class="sc">$</span>parametry[<span class="dv">3</span>])</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  Przebieg <span class="ot">&lt;-</span> <span class="fu">c</span>(Przebieg,samochod<span class="sc">$</span>parametry[<span class="dv">4</span>])</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  Pojemność_skokowa <span class="ot">&lt;-</span> <span class="fu">c</span>(Pojemność_skokowa,samochod<span class="sc">$</span>parametry[<span class="dv">5</span>])</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  Rodzaj_paliwa <span class="ot">&lt;-</span> <span class="fu">c</span>(Rodzaj_paliwa,samochod<span class="sc">$</span>parametry[<span class="dv">6</span>])</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  Moc <span class="ot">&lt;-</span> <span class="fu">c</span>(Moc,samochod<span class="sc">$</span>parametry[<span class="dv">7</span>])</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  Typ_nadwozia <span class="ot">&lt;-</span> <span class="fu">c</span>(Typ_nadwozia,samochod<span class="sc">$</span>parametry[<span class="dv">8</span>])</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  Kolor <span class="ot">&lt;-</span> <span class="fu">c</span>(Kolor,samochod<span class="sc">$</span>parametry[<span class="dv">9</span>])</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  Cena <span class="ot">&lt;-</span> <span class="fu">c</span>(Cena,samochod<span class="sc">$</span>parametry[<span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><strong>Inkrementacja numeru identyfikacyjnego</strong></p>
+<p>Zwiększamy numer identyfikacyjny pojazdu o 1.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a> id_i <span class="ot">&lt;-</span> id_i<span class="sc">+</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>W tym miejscu zamykają się obie pętle.</p>
+</section>
+</section>
+</section>
+<section id="ramka-danych-z-parametrami-samochodów" class="level2">
+<h2 class="anchored" data-anchor-id="ramka-danych-z-parametrami-samochodów">Ramka danych z parametrami samochodów</h2>
+<p>Utwórzmy teraz ramkę danych dla wszystkich pobranych samochodów.</p>
+<section id="tworzenie-ramki" class="level3">
+<h3 class="anchored" data-anchor-id="tworzenie-ramki">Tworzenie ramki</h3>
+<p>Aby utworzyć ramkę używamy wartości utworzonych wcześniej wektorów.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>samochody <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  id <span class="ot">&lt;-</span> id[<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  Marka_pojazdu <span class="ot">&lt;-</span> Marka_pojazdu[<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  Model_pojazdu <span class="ot">&lt;-</span> Model_pojazdu[<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  Rok_produkcji <span class="ot">&lt;-</span> Rok_produkcji[<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  Przebieg<span class="ot">&lt;-</span> Przebieg[<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  Pojemność_skokowa<span class="ot">&lt;-</span> Pojemność_skokowa[<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  Rodzaj_paliwa<span class="ot">&lt;-</span> Rodzaj_paliwa[<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  Moc<span class="ot">&lt;-</span> Moc[<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  Typ_nadwozia<span class="ot">&lt;-</span> Typ_nadwozia[<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  Kolor<span class="ot">&lt;-</span> Kolor[<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  Cena<span class="ot">&lt;-</span> Cena[<span class="sc">-</span><span class="dv">1</span>],</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="zmiana-nazw-kolumn" class="level3">
+<h3 class="anchored" data-anchor-id="zmiana-nazw-kolumn">Zmiana nazw kolumn</h3>
+<p>Nazwijmy teraz kolumny zgodnie z nazwami parametrów.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(samochody) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>,</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Marka_pojazdu"</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Model_pojazdu"</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Rok_produkcji"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Przebieg"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Pojemność_skokowa"</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Rodzaj_paliwa"</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Moc"</span>,</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Typ_nadwozia"</span>,</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Kolor"</span>,</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"Cena"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="wynik" class="level2">
+<h2 class="anchored" data-anchor-id="wynik">Wynik</h2>
+<p>Otrzymana baza prezentuje się następująco:</p>
+<p><img src="opis_dzialania_skryptu_files/figure-html/wynik.png" class="img-fluid"></p>
+<section id="zapis-do-pliku-csv" class="level3">
+<h3 class="anchored" data-anchor-id="zapis-do-pliku-csv">Zapis do pliku CSV</h3>
+<p>Utworzoną ramkę danych eksportujemy do pliku CSV.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(samochody,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"ścieżka"</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

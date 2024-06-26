@@ -1,31 +1,35 @@
----
-title: "Eksploracja danych"
-author: "Guz Bartłomiej & Żak Cezary"
-date: "2024-06-12"
-output:
-  html_document:
-    toc: true
-    toc_float: true
-    toc_depth: 5
----
+-   <div>
+
+    ---
+    title: "Eksploracja danych"
+    author: "Guz Bartłomiej & Żak Cezary"
+    date: "2024-06-12"
+    output:
+      html_document:
+        toc: true
+        toc_float: true
+        toc_depth: 5
+    ---
+
+    </div>
 
 # Projekt z eksploracji danych
 
 ## Wstęp
 
-Poniższa analiza dotyczy parametrów samochodów osobowych, wystawionych na sprzedaż za pośrednictwem portalu internetowego <a href="https://www.otomoto.pl/"> otomoto.pl</a> z okolic Lublina (w promieniu 50 km).
+Analiza dotyczy parametrów samochodów osobowych, wystawionych na sprzedaż za pośrednictwem portalu internetowego <a href="https://www.otomoto.pl/"> otomoto.pl</a> z okolic Lublina (w promieniu 50 km).
 
-Informacje o samochodach zostały pobrane ze strony za pomocą osobnego skryptu napisanego w R:
+Informacje o samochodach zostały pobrane ze strony za pomocą osobnego skryptu napisanego w R (październik 2022):
 
 [otomoto_scraping.R](./otomoto_scraping.R) ([Opis działania skryptu](./opis_dzialania_skryptu.html))
 
 ### Czego możemy się dowiedzieć?
 
-Analiza parametrów samochodów osobowych może obejmować wiele różnych czynników, w zależności od tego, jakie kryteria są ważne dla konkretnego klienta. Przykłady parametrów, które mogą być brane pod uwagę, to m.in. moc silnika, pojemność skokowa, rodzaj paliwa, wielkość i typ nadwozia, wyposażenie, przestronność wnętrza, bezpieczeństwo i wygodę. Parametry te mogą być również porównywane między różnymi modelami samochodów, aby uzyskać informacje na temat ich wydajności, jakości i kosztów eksploatacji. Analiza parametrów samochodów osobowych może być używana do określenia najlepszej oferty cenowej w stosunku do określonych wymagań klienta.
+Analiza parametrów samochodów osobowych może obejmować wiele różnych czynników zależnych od preferencji konkretnego klienta. Przykłady parametrów, które mogą być brane pod uwagę, to m.in. moc silnika, pojemność skokowa, rodzaj paliwa, wielkość i typ nadwozia, wyposażenie, przestronność wnętrza, bezpieczeństwo i wygodę. Parametry te mogą być również porównywane między różnymi modelami samochodów, aby uzyskać informacje na temat ich wydajności, jakości i kosztów eksploatacji. Analiza parametrów samochodów osobowych może być używana do określenia najlepszej oferty cenowej w stosunku do określonych wymagań klienta.
 
 ### Opis Parametrów
 
-Baza danych zawiera następujące parametry:
+Zbiór danych zawiera następujące parametry:
 
 -   **id -** wybrany przez nas indywidualny numer pojazdu
 
@@ -55,17 +59,17 @@ Baza danych zawiera następujące parametry:
 
     -   **Benzyna** jest paliwem zawierającym zwykle około 85% węglowodorów i jest używana do napędzania większości samochodów osobowych. Jest to jedno z najtańszych paliw dostępnych na rynku, a do tego jest łatwo dostępne. Jednakże jest ona również bardzo szkodliwa dla środowiska, ponieważ wytwarza duże ilości dwutlenku węgla, tlenków azotu i innych zanieczyszczeń.
 
-    -   **Diesel** to aktualnie najpopularniejszy rdzaj paliw stosowanych w samochodach osobowych. Jest ono wysoce wydajne i ekonomiczne, dlatego zyskuje popularność wśród tych, którzy szukają oszczędności. Jednak w porównaniu z benzyną, diesel wytwarza więcej tlenków azotu i innych zanieczyszczeń, które są szkodliwe dla środowiska.
+    -   **Diesel** to aktualnie najpopularniejszy rdzaj paliw stosowanych w samochodach osobowych. Paliwo to jest wysoce wydajne i ekonomiczne, dlatego zyskuje popularność wśród tych, którzy szukają oszczędności. W porównaniu z benzyną, diesel wytwarza więcej tlenków azotu i innych zanieczyszczeń, które są szkodliwe dla środowiska.
 
-    -   **Gaz ziemny (LPG)** jest jednym z najbardziej ekologicznych paliw stosowanych w samochodach osobowych. Wytwarzany z naturalnych i odnawialnych źródeł, takich jak metan i węgiel. Jego wytwarzanie wytwarza mniej dwutlenku węgla i innych zanieczyszczeń niż benzyna lub diesel.
+    -   **Gaz ziemny (LPG)** jest jednym z najbardziej ekonomicznych paliw stosowanych w samochodach osobowych. Wytwarzany z naturalnych i odnawialnych źródeł, takich jak metan i węgiel. Jego wytwarzanie wytwarza mniej dwutlenku węgla i innych zanieczyszczeń niż benzyna lub diesel.
 
     -   **Napęd hybrydowy** jest połączeniem benzyny i energii elektrycznej. Samochody hybrydowe wykorzystują silnik spalinowy do napędzania samochodu, ale również wykorzystują silnik elektryczny, aby wspierać pracę silnika spalinowego i zwiększyć wydajność.
 
-    -   **Energia elektryczna** jest coraz popularniejszym paliwem w samochodach osobowych. Samochody elektryczne nie wytwarzają żadnych szkodliwych zanieczyszczeń, co czyni je znacznie przyjazniejszymi dla środowiska. Jednak samochody elektryczne są zazwyczaj droższe od samochodów na benzynę lub diesel, a także mają ograniczone zasięgi.
+    -   **Energia elektryczna** jest coraz popularniejszym paliwem w samochodach osobowych. Samochody elektryczne nie wytwarzają żadnych szkodliwych zanieczyszczeń, co czyni je znacznie przyjazniejszymi dla środowiska. Są zazwyczaj droższe od samochodów zpalinowych, a także mają mniejszy zasięg. Problematyczna może okazać się również wymiana i utylizacja zużytej baterii.
 
--   **Moc :**
+-   **Moc:**
 
-    Parametr wyrażony w koniach mechanicznych (KM), oznaczający pracę, jaką jest w stanie wykonać silnik w określonym czasie. Im wyższa jest moc, tym krótszy będzie czas potrzebny do np. rozpędzenia auta. Maksymalna moc wynika z momentu obrotowego oraz prędkości obrotowej silnika i również jest osiągana w określonych warunkach, przeważnie w górnej skali obrotów.
+    Parametr wyrażony w koniach mechanicznych (KM), oznaczający pracę, jaką jest w stanie wykonać silnik w określonym czasie. Im wyższa jest moc, tym krótszy będzie czas potrzebny do np. rozpędzenia auta. Maksimum wynika z momentu obrotowego oraz prędkości obrotowej silnika i również jest osiągana w określonych warunkach, przeważnie w górnej skali obrotów.
 
 -   **Typ_nadwozia:**
 
@@ -73,9 +77,9 @@ Baza danych zawiera następujące parametry:
 
     1.  **Sedan**: Najbardziej popularny typ samochodu osobowego, charakteryzujący się czterema drzwiami i kontuarem.
 
-    2.  **Kombi**: Jest to samochód osobowy ze względu na swoją elastyczność i przestronność. Zazwyczaj ma cztery drzwi, kontur i szerokie tylne siedzenia.
+    2.  **Kombi**: Samochód osobowy z drzwiami tylnymi i konturem. W porównaniu z nadwoziem typu sedan zwiększoną pojemność bagażnika. Jest to wygodny wybór dla osób, które często transportują duże ilości bagażu.
 
-    3.  **Hatchback(auta miejskie)**: Samochód osobowy z drzwiami tylnymi i konturem. Jest to wygodny wybór dla osób, które często transportują duże ilości bagażu.
+    3.  **Hatchback(auta miejskie)**: Zazwyczaj ma cztery drzwi, kontur i szerokie tylne siedzenia.
 
     4.  **Coupe**: składa się z dwóch lub trzech drzwi z zazwyczaj zmniejszoną liczbą siedzeń w porównaniu z tradycyjnym sedanem. Charakteryzuje się długim, płaskim dachem i zazwyczaj zwężonym tyłem. Coupe zazwyczaj występuje w wersji sportowej i oferuje wyższą wydajność i więcej mocy niż sedan.
 
@@ -243,9 +247,9 @@ Volvo 6.81
 
 #### Model pojazdu
 
-Analizować będziemy tylko 10 najpopularniejszych marek ( z powyższego zestawienia ). Będą to:
+Analizować będziemy tylko 5 najpopularniejszych marek ( z powyższego zestawienia ). Będą to:
 
-##### BMW
+##### **BMW**
 
 ```{r}
   top10 <- head(autka_Marki_sort[,1],n=10)
@@ -269,7 +273,7 @@ geom_bar(stat="identity")
   ggplotly(obiekt)
 ```
 
-##### Audi
+##### **Audi**
 
 ```{r}
 autka_Model2 <- autka_dt[autka_dt$Marka_pojazdu==top10[2],]|>
@@ -292,7 +296,7 @@ geom_bar(stat="identity")
   ggplotly(obiekt)
 ```
 
-##### Volvo
+##### **Volvo**
 
 ```{r}
 autka_Model3 <- autka_dt[autka_dt$Marka_pojazdu==top10[3],]|>
@@ -315,7 +319,7 @@ geom_bar(stat="identity")
   obiekt|>ggplotly()
 ```
 
-##### Volkswagen
+##### **Volkswagen**
 
 ```{r}
 autka_Model4 <- autka_dt[autka_dt$Marka_pojazdu==top10[4],]|>
@@ -338,7 +342,7 @@ geom_bar(stat="identity")
   obiekt|>ggplotly()
 ```
 
-##### Opel
+##### **Opel**
 
 ```{r}
 autka_Model5 <- autka_dt[autka_dt$Marka_pojazdu==top10[5],]|>
@@ -384,7 +388,7 @@ geom_bar(stat="identity")
   obiekt|>ggplotly()
 ```
 
-Najpopularniejszym typem nadwozia okazał się SUV.
+Najpopularniejszym typem nadwozia okazał się **SUV.**
 
 Ludzie jeżdżą samochodami typu SUV, ponieważ są one bardziej wytrzymałe i mają lepszą przyczepność w trudnych warunkach. SUV-y mają również większą przestrzeń wewnątrz, co oznacza, że są one bardziej funkcjonalne dla rodzin i osób, które potrzebują dużej ilości miejsca do przewożenia przedmiotów. Są również bardziej wygodne i bezpieczne, ponieważ mają wyższe siedzenia i wyższy próg, co zapewnia lepszą widoczność i stabilność.
 
@@ -411,15 +415,22 @@ geom_bar(stat="identity")
   obiekt|>ggplotly()
 ```
 
-Widzimy, że zdecydowaną większością są samochody napędzane benzyną. Ma ona wiele zalet, w tym wyższą sprawność niż inne paliwa, a także łatwość użytkowania. Jest także bardziej przystępna cenowo niż inne paliwa, co czyni ją bardziej opłacalnym dla wielu kierowców. Niestety, benzyna ma też swoje wady, w tym wyższe emisje spalin i krótszy czas pracy niż inne paliwa. Związane jest to ze spalaniem benzyny, która jest bardziej skomplikowana i wymaga większej ilości energii, aby została spalona w porównaniu do innych.
+Widzimy, że zdecydowaną większością są samochody napędzane benzyną. Ma ona wiele zalet, w tym wyższą sprawność niż inne paliwa, a także łatwość użytkowania. Niestety, benzyna ma też swoje wady, w tym wyższe emisje spalin i krótszy czas pracy niż inne paliwa. Związane jest to z procesem spalania benzyny, który jest nieco skomplikowany i wymaga większej ilości energii, niż pozostałe paliwa.
 
-Silniki napędzane ropą mają zazwyczaj większą moc niż te napędzane innymi paliwami. Oznacza to, że samochody napędzane ropą są lepsze do jazdy po autostradzie i pozwalają uzyskać wyższą prędkość maksymalną. Silniki napędzane ropą mają zazwyczaj wyższą wydajność niż silniki napędzane innymi paliwami. Oznacza to, że samochody napędzane ropą są bardziej ekonomiczne w zużyciu paliwa, dzięki czemu użytkownicy mogą zaoszczędzić na kosztach paliwa. Ogromną zaletą jest również długa żywotność silnika, dlatego właśnie są one tak popularne.
+Silniki napędzane ropą mają zazwyczaj większą moc niż te napędzane innymi paliwami. Oznacza to, że są one lepsze do jazdy po autostradzie i pozwalają uzyskać wyższą prędkość maksymalną. Dodatkowo są bardziej ekonomiczne w zużyciu paliwa, dzięki czemu użytkownicy mogą zaoszczędzić na kosztach paliwa. Ogromną zaletą jest również długa żywotność silnika, co może wpływać na ich popularność.
 
-Jest on znacznie bardziej ekologiczny niż benzyna lub olej napędowy, ale jest również trudniejszy w instalacji. Wymaga on budowy stacji do tankowania gazu, w których należy również przechowywać go w bezpieczny sposób. Ponadto samochody napędzane gazem ziemnym są droższe w produkcji niż samochody napędzane tradycyjnymi paliwami, co sprawia, że producenci samochodów niechętnie sięgają po te technologie.
+Gaz ziemny jest znacznie bardziej ekologiczny niż benzyna lub olej napędowy, ale jest również trudniejszy w instalacji. Od użytkownika wymaga się aby przechowywać go w bezpieczny sposób. Ponadto samochody napędzane gazem ziemnym są droższe w produkcji niż samochody napędzane tradycyjnymi paliwami, co sprawia, że producenci samochodów niechętnie sięgają po te technologie. Wadą może okazać się również przymus częstego tankowania.
 
-Hybrydy są relatywnie nowymi pojazdami na drogach, a ich popularność stale rośnie. Jednak jest to nadal rynek raczkujący, a producenci nadal udoskonalają technologię, aby zapewnić kierowcom najlepsze wrażenia z jazdy. Hybrydy są wyraźnie droższe niż tradycyjne samochody spalinowe, dlatego wielu kierowców może się wahać przy ich zakupie. Wraz z pojawieniem się nowszych technologii hybrydowe, które są coraz bardziej wydajne i wygodne, oczekuje się, że ich popularność będzie dalej rosnąć. Dlaczego jest ich tak mało? - Wysoka cena. Hybrydy są zazwyczaj droższe od tradycyjnych samochodów spalinowych. - Trudność w utrzymaniu. Hybrydy są zazwyczaj trudniejsze w utrzymaniu niż tradycyjne samochody spalinowe, ponieważ wymagają specjalnych części i narzędzi do serwisowania. Ograniczony zasięg. Hybrydy zazwyczaj mają ograniczony zasięg, ponieważ akumulatory szybko się wyczerpują.
+Hybrydy są relatywnie nowymi pojazdami na drogach, a ich popularność stale rośnie. Jednak jest to nadal rynek raczkujący, a producenci nadal udoskonalają technologię, aby zapewnić kierowcom najlepsze wrażenia z jazdy. Hybrydy są wyraźnie droższe niż tradycyjne samochody spalinowe, dlatego wielu kierowców może się wahać przy ich zakupie. Wraz z pojawieniem się nowszych technologii hybrydowe, które są coraz bardziej wydajne i wygodne, oczekuje się, że ich popularność będzie dalej rosnąć.\
+Dlaczego jest ich tak mało?
 
-Najmniej jest samochodów elektrycznych (3 modele). Samochody elektryczne są wciąż na wczesnym etapie rozwoju i ich popularność jest ograniczona. Głównymi przyczynamisą niska dostępność, wysokie koszty zakupu, ograniczone możliwości ładowania, krótki zasięg i brak infrastruktury ładowania. W wielu krajach nie ma dostatecznego poziomu inwestycji w infrastrukturę do ładowania, a samochody elektryczne są obciążone wysokimi podatkami. W wielu krajach wciąż brakuje odpowiednich środków pomocy publicznej na zakup samochodów elektrycznych, co ogranicza dostępność tych pojazdów. Dodatkową przyczyną małej ilości samochodów, jest to, że nasza baza składa się w większości z samochodów będących eksploatowacnych przez przynajmniej jednego właściciela.
+-   Wysoka cena. Hybrydy są zazwyczaj droższe od tradycyjnych samochodów spalinowych.
+
+-   Trudność w utrzymaniu. Zazwyczaj są również trudniejsze w utrzymaniu niż tradycyjne samochody spalinowe, ponieważ wymagają specjalnych części i narzędzi do serwisowania.
+
+-   Ograniczony zasięg. Hybrydy zazwyczaj mają ograniczony zasięg, ponieważ akumulatory szybko się wyczerpują.
+
+Najmniej jest samochodów elektrycznych (3 modele w całym zbiorze). Samochody elektryczne są wciąż na wczesnym etapie rozwoju i ich popularność jest ograniczona. Głównymi przyczynamisą niska dostępność, wysokie koszty zakupu, ograniczone możliwości ładowania, krótki zasięg i brak infrastruktury ładowania. W wielu krajach nie ma dostatecznego poziomu inwestycji w infrastrukturę do ładowania, a samochody elektryczne są obciążone wysokimi podatkami. Wciąż brakuje odpowiednich środków pomocy publicznej na zakup samochodów elektrycznych, co ogranicza dostępność tych pojazdów. Dodatkową przyczyną małej ilości samochodów, jest to, że nasza baza składa się w większości z samochodów będących eksploatowacnych przez przynajmniej jednego właściciela.
 
 #### Kolor
 
@@ -450,23 +461,21 @@ geom_bar(stat="identity", fill=c("beige", "white","darkred",
 obiekt|>ggplotly()
 ```
 
-To, jaki kolor samochodu wybiera kupujący jest wyborem subiektywnym, są jednak pewne przesłanki, dlaczego ludzie pewne kolory wybierają cześciej od pozostałych:
+Kolor samuchodu wybierany przez kupującego jest wyborem subiektywnym. Jednakże pojawiają się pewne przesłanki sługerujące, dlaczego pewne kolory są wybierane częściej od pozostałych:
 
 Czarny kolor samochodu osobowego jest zazwyczaj wybierany ze względu na jego wszechstronność i uniwersalność. Jest on jednym z najbardziej popularnych kolorów samochodów osobowych, ponieważ łatwo dopasowuje się do innych kolorów, wygląda elegancko i jest łatwy w czyszczeniu. Ponadto uważany jest za symbol luksusu i statusu.
 
-Szary kolor samochodu osobowego jest popularny, ponieważ jest uniwersalny. Nie jest ani zbyt jasny ani zbyt ciemny, dzięki czemu pasuje do wielu stylów wystroju wnętrz. Jest również znacznie łatwiejszy do utrzymania w czystości niż inne jasne kolory. Dodatkowo, może on pomóc w zmniejszeniu temperatury wewnątrz kabiny, dzięki czemu pojazd jest bardziej komfortowy.
+Popularność koloru szarego związana jest z uniwersalnością. Nie jest ani zbyt jasny ani zbyt ciemny, dzięki czemu pasuje do wielu stylów wystroju wnętrz. Jest również znacznie łatwiejszy do utrzymania w czystości niż inne jasne kolory. Dodatkowo, może on pomóc w zmniejszeniu temperatury wewnątrz kabiny, dzięki czemu pojazd jest bardziej komfortowy.
 
-Srebrny podobnie jak szary kolor jest popularny, ponieważ jest bardzo uniwersalny i pasuje do wielu różnych typów samochodów. Jest również łatwy w utrzymaniu, ponieważ nie ma potrzeby częstego polerowania i zabezpieczania.
+Srebrny podobnie jak kolor szary jest popularny ze względu na uniwersalność. Jest również łatwy w utrzymaniu, ponieważ nie ma potrzeby częstego polerowania i zabezpieczania.
 
-Białe samochody są popularne, ponieważ są zazwyczaj bardziej dostępne w niższych cenach (sprawdzimy czy to prawda) i są łatwiejsze w utrzymaniu w czystości. Ponadto, biały kolor samochodu może pomóc w nadawaniu mu nowoczesnego wyglądu, który może zwiększyć jego wartość. Biały odcień jest również popularny ze względu na jego uniwersalny wygląd, który może pasować do każdego rodzaju otoczenia.
+Samochody w kolorze białym są łatwiejsze w utrzymaniu w czystości. Ponadto, biały kolor samochodu może pomóc w nadawaniu mu nowoczesnego wyglądu, który może zwiększyć jego wartość. Biały odcień jest również popularny ze względu na jego uniwersalny wygląd, który może pasować do każdego rodzaju otoczenia.
 
-Zastanówmy się jeszcze, dlaczego kolory takie jak pomarańczowy, żółty i filetowy są tak mało popularne? Oto kilka sugestii.
+Zastanówmy się jeszcze, dlaczego kolory takie jak pomarańczowy czy filetowy są tak mało popularne? Oto kilka sugestii.
 
 Fioletowe samochody są zazwyczaj wytwarzane z tańszych materiałów, co prowadzi do niższej jakości. Są również bardziej podatne na awarie i korozję, co oznacza większe koszty utrzymania. Ponadto, w porównaniu do nowych samochodów, mają mniej opcji i technologii, które są dostępne w nowych samochodach, przez co są mało atrakcyjne dla kupujących.
 
-Pomarańczowy kolor samochodu jest zwykle uważany za zbyt odważny, zazwyczaj ludzie wolą kupować bardziej tradycyjne kolory, takie jak srebrny, czarny lub biały. Ponadto, kolor pomarańczowy jest trudniejszy do utrzymania w czystości, ponieważ łatwo się brudzi i trudniej go wyczyścić.
-
-Ludzie nie kupują żółtych samochodów, ponieważ uważają, że jest to mało popularny kolor. Żółty jest postrzegany jako niepraktyczny i nieatrakcyjny wybór, ponieważ jest trudny do dopasowania do innych kolorów lub wzorów i może być uważany za zbyt „śmiały” lub „niesmaczny”. Dlatego jest ich tak mało.
+Pomarańczowy kolor samochodu jest zwykle uważany za zbyt odważny, zazwyczaj ludzie wolą kupować bardziej tradycyjne kolory, takie jak srebrny, czarny lub biały. Pomarańczowy samochód może wiązać się z trudnościami w utrzymaniu estetycznej czystości, ponieważ łatwo się brudzi i trudniej go wyczyścić.
 
 2.  Zmienne ilościowe
 
@@ -484,7 +493,7 @@ as.data.frame(liczbowe) |>
 
 ### Zmienne typu liczbowego
 
-#### Rok produkcji
+#### **Rok produkcji**
 
 ```{r}
 as.data.frame(liczbowe[,1]) |>
@@ -513,7 +522,7 @@ autka[autka$Rok_produkcji==1961,] |>
   kable()
 ```
 
-Najstarszym samochodem okazał się nr. 1171. Samochód został wyprodukowany 61 lat temu! Na podstawie histogramu wiemy, że naprawdę jest to rzadkie zjawisko. Wiemy, że samochod jest marki “FIAT”, niestety sprzedający nie podał konkretnego modelu auta. Wiemy jedynie, że jest marki FIAT. Po przeszukaniu informacji w internecie (link), udało się znaleźć informacje, że firma Fiat w 1961 roku produkowała tylko i wyłącznie poniższe samochody: [zdjecie1] Dodatkowo wiemy, że typ nadwozia to sedan, a więc zwężamy zbiór możliwości do: [zdjecie2] Analizując poszczególne modele, okazuje się że moc silnika naszego auta w porównaniu ze specyfikacjami modeli 1100 oraz 1300 jest za duża, natomiast model 1800/2100 według danych ze strony powinien mieć większą pojemność skokową silnika. Tak więc prawdopodobnie samochód z naszej bazy to właśnie Fiat 1500. Dane z bazy pokrywają się z podaną specyfikacją pojazdu. [zdjecie3]
+Najstarszym samochodem okazał się nr. 1171. Samochód został wyprodukowany 61 lat temu! Na podstawie histogramu wiemy, że naprawdę jest to rzadkie zjawisko. Wiemy, że samochod jest marki “FIAT”, niestety sprzedający nie podał konkretnego modelu auta. Wiemy jedynie, że jest marki FIAT. Po przeszukaniu informacji w internecie ([link](https://pl.wikipedia.org/wiki/Lista_samochod%C3%B3w_Fiat)), udało się znaleźć informacje, że firma Fiat w 1961 roku produkowała tylko i wyłącznie poniższe samochody: ![](otomoto_projekt_files/obrazki/najstarszy1.png) Dodatkowo wiemy, że typ nadwozia to sedan, a więc zwężamy zbiór możliwości do: ![](otomoto_projekt_files/obrazki/najstarszy2.png) Analizując poszczególne modele, okazuje się że moc silnika naszego auta w porównaniu ze specyfikacjami modeli 1100 oraz 1300 jest za duża, natomiast model 1800/2100 według danych ze strony powinien mieć większą pojemność skokową silnika. Tak więc prawdopodobnie samochód z naszej bazy to właśnie Fiat 1500. Dane z bazy pokrywają się z podaną specyfikacją pojazdu. ![](otomoto_projekt_files/obrazki/najstarszy3.png)
 
 ##### (***ciekawostka*** - samochody zabytkowe)
 
@@ -562,7 +571,7 @@ autka_dt|>
   kable(caption = "Statystyki roku produkcji dla poszczególnych marek ")
 ```
 
-#### Przebieg
+#### **Przebieg**
 
 ```{r}
 as.data.frame(liczbowe[,2]) |>
@@ -706,9 +715,11 @@ ggplot(aes(y=Przebieg,x=Wiek),data=autka_dt2)+
 
 *Ciekawa zależność pojawia się dla starszych samochodów. Występuje tu pewien "przeskok" i wartość oschylenia standardowego starszych roczników zaczyna oscylować wokół 6000.*
 
-**Oczywiście jest to tylko wskazówka, a nie dowód.** Na postawie analizy przebiegu kupujący ma przesłanki do tego, aby zapyać sprzedającego o szczegóły auta, które mogą wpływać na przebieg. np. cel użytku samochodu przez byłego właściciela.
+**Oczywiście jest to tylko wskazówka, a nie dowód.**
 
-#### Pojemność skokowa silnika
+Na postawie analizy przebiegu kupujący ma przesłanki do tego, aby zapyać sprzedającego o szczegóły auta, które mogą wpływać na przebieg. np. cel użytku samochodu przez byłego właściciela.
+
+#### **Pojemność skokowa silnika**
 
 ```{r}
 as.data.frame(liczbowe[,3]) |>
@@ -766,7 +777,7 @@ autka_dt3[autka_dt3$Pojemność_skokowa==min(autka_dt3$Pojemność_skokowa),]
 
 Silnik 1,9 o pojemności (TDI) jest powszechnie uznawany za jeden z najlepszych, ponieważ jest wyjątkowo ekonomiczny, ma wysoką wydajność i moc, a jednocześnie cechuje go niski poziom emisji spalin. To wszystko sprawia, że jest bardzo popularny wśród kierowców, którzy korzystają z niego do samochodów osobowych i dostawczych. Dzięki swojej pojemności skokowej silnik 1,9 oferuje wystarczającą moc i wydajność w zakresie zużycia paliwa i emisji spalin. Dodatkowo jest on bardzo trwały i niezawodny, a jego konserwacja jest prosta i niedroga.
 
-#### Moc silnika
+#### **Moc silnika**
 
 Podobnie jak w poprzednim przypadku, samochody elektryczne nie będą brane pod uwagę w analizie.
 
@@ -799,7 +810,7 @@ autka_dt3[autka_dt3$Moc==min(autka_dt3$Moc),]
 
 Średnia moc: 153KM.
 
-#### Cena samochodu
+#### **Cena samochodu**
 
 ```{r}
 as.data.frame(liczbowe[,5]) |>
@@ -841,55 +852,57 @@ autka_dt[autka_dt$Cena==min(autka_dt$Cena),]
 
 ## 3. Selekcja danych
 
-Do dalszego przetwarzania danych i ewlauacji modelu można wyrzucić kolumnę z indeksami krotek
+Do dalszego przetwarzania danych i ewlauacji modelu można wyrzucić kolumnę z indeksami krotek. Zbiór samochodów ograniczymy też do 10 najpopularniejszych marek (jednym z powodów jest to, że RandomForest nie można utworzyć jeżeli jest więcej niż ok 50. kategorii w kolumnie a tak będzie w przypadku chociażby Model Pojazdu)
 
 ```{r}
-autka_dt <- subset(autka_dt,select = -1)
+autka_dt <- subset(autka_dt,select = -id)
+autka_dt$Marka_pojazdu <- factor(autka_dt$Marka_pojazdu, levels = c("Volvo","Audi","BMW","Volkswagen","Opel","Renault","Ford","Toyota","Mercedes-Benz","Citroën","Inny")) 
+autka_dt <- na.omit(autka_dt)
 head(autka_dt)
 ```
+
 
 ## 4.Transformacja Danych
 
 Na wcześniejszym etapie przetwarzania zbioru nadano odpowiednim cechom typy wartości numeryczne i kategoryczne.
 
 ```{r}
-str(autka_dt)
+sapply(autka_dt,class)
 ```
-
-Kolumny "Marka Pojazdu" i "Model Pojazdu" są ze spobą powiązane w ten sposób, że wartości z kolumny "Model" należą do podzbioru który można oznaczyć wartościa z kolumny "Marka" np. "Astra", "Corsa" należą do podzbioru "Opel". W celu uniknięcia potencjalnych redundancji złączymy obie kolumny, by zachować osobność kategorii i usuniemy "Markę" i "Model".
-
+Ponieważ cecha "Model pojazdu" zawiere wiele unikalnych wartości będących wyznacznikami przynależności auta do określonej kategorii, usówamy kolumnę wartości ze zbioru danych.
 ```{r}
-autka_dt_MM <- autka_dt
-autka_dt_MM$Marka_Model <- paste(autka_dt_MM$Marka_pojazdu,autka_dt$Model_pojazdu)
-autka_dt_MM <- subset(autka_dt_MM,select = -1)
-autka_dt_MM <- subset(autka_dt_MM,select = -1)
-head(autka_dt_MM)
+autka_dt <- subset(autka_dt,select=-Model_pojazdu)
 ```
 
-```{r}
-head(autka_dt)
-```
 
 Wartości kategoryczne zamieniamy na wartości one-hot
 
 ```{r}
 library(fastDummies)
 
-autka_dt <- dummy_cols(autka_dt,select_columns = c("Marka_pojazdu","Model_pojazdu","Rodzaj_paliwa","Typ_nadwozia","Kolor"),remove_selected_columns = TRUE)
-
-autka_dt_MM <- dummy_cols(autka_dt_MM,select_columns = c("Marka_Model","Rodzaj_paliwa","Typ_nadwozia","Kolor"),remove_selected_columns = TRUE)
-
-
+autka_dt <- dummy_cols(autka_dt,select_columns = c("Marka_pojazdu","Rodzaj_paliwa","Typ_nadwozia","Kolor"),remove_selected_columns = TRUE)
 ```
 
+
+RandomForest ma problem z "trudnymi nazwami". Dlatego zamienimy nazwy kolumn na takie, które nie powinny sprawiać problemów
+
 ```{r}
-head(autka_dt)
-head(autka_dt_MM)
+autka_dt$Marka_pojazdu_Mercedes_Benz <- autka_dt$`Marka_pojazdu_Mercedes-Benz`
+autka_dt <- subset(autka_dt,select=-`Marka_pojazdu_Mercedes-Benz`)
+autka_dt$Typ_nadwozia_Auta_male <- autka_dt$`Typ_nadwozia_Auta małe`
+autka_dt <- subset(autka_dt,select=-`Typ_nadwozia_Auta małe`)
+autka_dt$Typ_nadwozia_Auta_miejskie <- autka_dt$`Typ_nadwozia_Auta miejskie`
+autka_dt <- subset(autka_dt,select=-`Typ_nadwozia_Auta miejskie`)
+autka_dt$Kolor_Inny_kolor <- autka_dt$`Kolor_Inny kolor`
+autka_dt <- subset(autka_dt,select=-`Kolor_Inny kolor`)
+autka_dt$Rodzaj_paliwa_Benzyna_LPG <- autka_dt$`Rodzaj_paliwa_Benzyna+LPG`
+autka_dt <- subset(autka_dt,select=-`Rodzaj_paliwa_Benzyna+LPG`)
+
 ```
 
 ## 5. Eksploracja Danych
 
-Zgodnie z przyjętym standardem usuwamy ze zbioru w poszczególnych kolumnach wartości, które nie znajdują się między pierwszym a trzebim kwantylem (Q1 -1.5IQR, Q3+1.5IQR)
+Zgodnie z przyjętym standardem usuwamy ze zbioru w poszczególnych kolumnach wartości, które nie znajdują się między pierwszym a trzecim kwantylem (Q1 -1.5IQR, Q3+1.5IQR)
 
 ```{r}
 Przytnij_kwartyl <- function(nazwa_kolumny,dataset)
@@ -900,10 +913,7 @@ Przytnij_kwartyl <- function(nazwa_kolumny,dataset)
   print(TOP)
   autka_dt <- autka_dt[(autka_dt[[nazwa_kolumny]] > BOTTOM),]
   autka_dt <- autka_dt[(autka_dt[[nazwa_kolumny]] < TOP),]
-  autka_dt_MM <- autka_dt_MM[(autka_dt_MM[[nazwa_kolumny]] > BOTTOM),]
-  autka_dt_MM <- autka_dt_MM[(autka_dt_MM[[nazwa_kolumny]] < TOP),]
   boxplot(autka_dt[[nazwa_kolumny]])
-  boxplot(autka_dt_MM[[nazwa_kolumny]])
 }
 ```
 
@@ -931,25 +941,14 @@ Przytnij_kwartyl("Cena")
 ggcorrplot(cor(autka_liczbowe2), lab=TRUE, p.mat = cor_pmat(autka_liczbowe2))
 ```
 
-Nie powinna dziwić wysoka korelacja między mocą silnika a pojemnością skokową. Może ona jednal być niekorzystna w dalszym przetwarzaniu. Dlatego zbudujemy dwa modele, w których wykorzystamy zbiór danych bez jednej z tych cech.
+Nie powinna dziwić wysoka korelacja między mocą silnika a pojemnością skokową. Może ona jednak być niekorzystna w dalszym przetwarzaniu. Dlatego zbudujemy dwa modele, w których wykorzystamy zbiór danych bez jednej z tych cech.
 
 ```{r}
-head(autka_dt)
-head(autka_dt_MM)
-```
-
-```{r}
-autka_dt_no_eng_capacity <- subset(autka_dt,select = -3)
+autka_dt_no_eng_capacity <- subset(autka_dt,select = -Pojemność_skokowa)
 autka_dt_no_eng_capacity
 
-autka_dt_MM_no_eng_capacity <- subset(autka_dt_MM,select = -3)
-autka_dt_MM_no_eng_capacity
-
-autka_dt_no_power <- subset(autka_dt,select = -4)
+autka_dt_no_power <- subset(autka_dt,select = -Moc)
 autka_dt_no_power
-
-autka_dt_MM_no_power <- subset(autka_dt_MM,select = -4)
-autka_dt_MM_no_power
 ```
 
 ## 6. Ewaluacja Modeli
@@ -963,65 +962,31 @@ set.seed(2024)
 Model regresyjny po mocy silnika
 
 ```{r}
-indexes_train <- sample(1:nrow(autka_dt_no_eng_capacity), size= nrow(autka_dt_no_eng_capacity)*0.8)
+indexes_train <- sample(1:nrow(autka_dt_no_eng_capacity), size= nrow(autka_dt_no_eng_capacity)*0.80)
 
 Train_1 <- autka_dt_no_eng_capacity[indexes_train,]
 Test_1 <- autka_dt_no_eng_capacity[-indexes_train,]
-nrow(Test_1)
 ```
 
 ```{r}
 Regresja1 <- glm(Cena ~ ., data=Train_1)
-
 summary(Regresja1)
 ```
 
-Model regresyjny po mocy silnika z jednolitą nazwą modelu auta
+
+Model regresyjny po pojemności skokowej
 
 ```{r}
-indexes_train <- sample(1:nrow(autka_dt_MM_no_eng_capacity), size= nrow(autka_dt_MM_no_eng_capacity)*0.8)
+indexes_train <- sample(1:nrow(autka_dt_no_power), size= nrow(autka_dt_no_power)*0.80)
 
-Train_2 <- autka_dt_MM_no_eng_capacity[indexes_train,]
-Test_2 <- autka_dt_MM_no_eng_capacity[-indexes_train,]
-nrow(Test_2)
+Train_2 <- autka_dt_no_power[indexes_train,]
+Test_2 <- autka_dt_no_power[-indexes_train,]
 ```
 
 ```{r}
 Regresja2 <- glm(Cena ~ ., data=Train_2)
 
 summary(Regresja2)
-```
-
-Model regresyjny po pojemności skokowej
-
-```{r}
-indexes_train <- sample(1:nrow(autka_dt_no_power), size= nrow(autka_dt_no_power)*0.8)
-
-Train_3 <- autka_dt_no_power[indexes_train,]
-Test_3 <- autka_dt_no_power[-indexes_train,]
-nrow(Test_3)
-```
-
-```{r}
-Regresja3 <- glm(Cena ~ ., data=Train_3)
-
-summary(Regresja3)
-```
-
-Model regresyjny po pojemności skokowej z jednolitą nazwą modelu auta
-
-```{r}
-indexes_train <- sample(1:nrow(autka_dt_MM_no_power), size= nrow(autka_dt_MM_no_power)*0.8)
-
-Train_4 <- autka_dt_MM_no_power[indexes_train,]
-Test_4 <- autka_dt_MM_no_power[-indexes_train,]
-nrow(Test_4)
-```
-
-```{r}
-Regresja4 <- glm(Cena ~ ., data=Train_4)
-
-summary(Regresja4)
 ```
 
 Predykcje
@@ -1032,10 +997,55 @@ library("caret")
 
 ```{r}
 
-RMSE(predict(Regresja1, newdata=Test_1), Test_1$Cena)
-RMSE(predict(Regresja2, newdata=Test_2), Test_2$Cena)
-RMSE(predict(Regresja3, newdata=Test_3), Test_3$Cena)
-RMSE(predict(Regresja4, newdata=Test_4), Test_4$Cena)
+reg1_rmse <- RMSE(predict(Regresja1, newdata=Test_1), Test_1$Cena)
+reg2_rmst <- RMSE(predict(Regresja2, newdata=Test_2), Test_2$Cena)
+```
+Random Forest
+
+Zbadamy jakość tworzonych modeli w zależnośći od zmienianych parametrów. Podstawowym parametrem jest liczba drzew w lesie. Jakość będziemy badać dla liczby drzew z przedniału od 45 do 1000 co 5 (45,50,55,65,...,990,995,1000)
+
+
+```{r}
+  wyniki <- matrix(, ncol = 3)
 ```
 
-## 7. Wizualizacja Wyników
+```{r}
+library(randomForest)
+for (x in 45:1000){
+  if (x %% 5 == 0)
+  {
+  RF1 <- randomForest(Cena~., data=subset(Train_1),ntree=x,mtry=(ncol(autka_dt)-1)/3)
+  pred1 <- RMSE(predict(RF1, newdata=Test_1), Test_1$Cena)
+  RF2 <- randomForest(Cena~., data=subset(Train_2),ntree=x,mtry=(ncol(autka_dt)-1)/3)
+  pred2 <- RMSE(predict(RF2, newdata=Test_2), Test_2$Cena)
+  wyniki <- rbind(wyniki,c(x,pred1,pred2))
+  }
+}
+wyniki <- wyniki[-c(1),]
+wyniki
+```
+
+```{r}
+w <- as.data.frame(wyniki)
+colnames(w) <- c('n_tree', "Engine model RMSE","Capacity model RMSE")
+ggplot()+ geom_line(data=w, aes(x=n_tree, y=`Engine model RMSE`), color = "blue") + geom_point()
+
+  ggplot()+ geom_line(data=w, aes(x=n_tree, y=`Capacity model RMSE`), color = "red") +
+  geom_point()
+   
+```
+```{r}
+summary(w)
+reg_res <- data.frame(Model = c("Błąd średniokwadratowy dla regresji na zbiorze z mocą silnika", "Błąd średniokwadratowy dla regresji na zbiorze z pojemnością silnika"),Result =c(reg1_rmse,reg2_rmst))
+reg_res
+```
+
+## 7. Podsumowanie
+
+Na przetworzonym zbiorze danych zbudowano po dwa modele regresji logistycznej i drzewa decyzyjnego. Każdy algorytm uczenia mszynowego zastosowano na dwch zbiorach danych: jeden zawierał informacje o mocy silnika, drugi o pojemości silnika (rozdzielono te kolumny z powodu dużej korelacji)
+
+Dla wszystkich modeli wyznaczono błąd średniokwadratowy. Można zauważyć, że dla zbioru z mocą silnika ów błąd jest mniejszy od błędu w modelach uczonych na zbiorze z pojemnością. Błąd średniokwadratowy we wszystkich przypadkach jest dosyć duży i prawdopodobnie wynika on ze specyfiki zbioru: mała liczba przykładów w stosunku do odchylenia danych i dużej ilości wartości kategorycznych.
+
+Dla lasów losowych błędy średniokwadratowe były mniejsze niż dla odpowiadających modeli regresyjnych.
+
+Zmiana podstawowego parametu jakim była liczba drzew w lesie losowym bezpośrednio nie polepszała jakości modeli. Nie można wskazać jednoznacznej korelacji między ilością drzew a wartością błędu średniokwadratowego dla lasów losowych.
